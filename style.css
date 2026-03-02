@@ -1,0 +1,549 @@
+:root {
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: var(--magnolia);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-container {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  display: flex;
+  width: 900px;
+  height: 600px;
+  margin-top: 50px;
+}
+
+/* Sidebar */
+.sidebar {
+  background-image: url("./assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 274px;
+  height: 100%;
+  border-radius: 10px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex-shrink: 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-transform: uppercase;
+}
+
+.step-number {
+  width: 33px;
+  height: 33px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.step-number.active {
+  background-color: var(--light-blue);
+  color: var(--marine-blue);
+  border-color: var(--light-blue);
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-subtitle {
+  color: var(--pastel-blue);
+  font-size: 12px;
+}
+
+.step-title {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Form Container */
+.form-container {
+  flex: 1;
+  padding: 40px 80px 16px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.step-content {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+}
+
+.step-content.active {
+  display: flex;
+}
+
+.form-title {
+  color: var(--marine-blue);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.form-description {
+  color: var(--cool-gray);
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+/* Inputs */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+label {
+  color: var(--marine-blue);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-msg {
+  color: var(--strawberry-red);
+  font-size: 14px;
+  font-weight: 700;
+  display: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--marine-blue);
+  cursor: pointer;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--purplish-blue);
+}
+
+input.error {
+  border-color: var(--strawberry-red);
+}
+
+/* Plan Cards */
+.plan-options {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.plan-card {
+  flex: 1;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.plan-card:hover {
+  border-color: var(--purplish-blue);
+}
+
+.plan-card.selected {
+  border-color: var(--purplish-blue);
+  background-color: var(--alabaster);
+}
+
+.plan-card img {
+  margin-bottom: 40px;
+}
+
+.plan-info h3 {
+  color: var(--marine-blue);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.plan-price {
+  color: var(--cool-gray);
+  font-size: 14px;
+}
+
+.plan-bonus {
+  color: var(--marine-blue);
+  font-size: 12px;
+  margin-top: 6px;
+  display: none;
+}
+
+/* Toggle Switch */
+.billing-toggle {
+  background-color: var(--alabaster);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.billing-option {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cool-gray);
+  transition: color 0.3s;
+}
+
+.billing-option.active {
+  color: var(--marine-blue);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--marine-blue);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* Add-ons */
+.addon-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addon-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 16px 24px;
+  cursor: pointer;
+}
+
+.addon-card:hover {
+  border-color: var(--purplish-blue);
+}
+
+.addon-card.selected {
+  border-color: var(--purplish-blue);
+  background-color: var(--alabaster);
+}
+
+.addon-card input {
+  width: 20px;
+  height: 20px;
+  margin-right: 24px;
+  accent-color: var(--purplish-blue);
+}
+
+.addon-info {
+  flex: 1;
+}
+
+.addon-info h3 {
+  color: var(--marine-blue);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.addon-info p {
+  color: var(--cool-gray);
+  font-size: 14px;
+}
+
+.addon-price {
+  color: var(--purplish-blue);
+  font-size: 14px;
+}
+
+/* Summary */
+.summary-box {
+  background-color: var(--alabaster);
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-plan-name h3 {
+  color: var(--marine-blue);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.summary-plan-name a {
+  color: var(--cool-gray);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.summary-plan-name a:hover {
+  color: var(--purplish-blue);
+}
+
+.summary-plan-price {
+  color: var(--marine-blue);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(150, 153, 170, 0.2);
+  margin: 24px 0;
+}
+
+.summary-addon-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.summary-addon-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-addon-name {
+  color: var(--cool-gray);
+  font-size: 14px;
+}
+
+.summary-addon-price {
+  color: var(--marine-blue);
+  font-size: 14px;
+}
+
+.total-row {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-label {
+  color: var(--cool-gray);
+  font-size: 14px;
+}
+
+.total-price {
+  color: var(--purplish-blue);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Buttons */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.btn-next,
+.btn-confirm {
+  background-color: var(--marine-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.btn-next:hover {
+  background-color: #164a8a;
+}
+
+.btn-confirm {
+  background-color: var(--purplish-blue);
+  display: none;
+}
+
+.btn-confirm:hover {
+  opacity: 0.8;
+}
+
+.btn-back {
+  background-color: transparent;
+  color: var(--cool-gray);
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.btn-back:hover {
+  color: var(--marine-blue);
+}
+
+/* Thank You Step */
+.thank-you-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.thank-you-wrapper img {
+  width: 80px;
+  margin-bottom: 32px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  body {
+    background-color: var(--magnolia);
+    display: block;
+  }
+
+  .main-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    width: 100%;
+    height: 172px;
+    border-radius: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 32px;
+    gap: 16px;
+  }
+
+  .step-info {
+    display: none;
+  }
+
+  .form-container {
+    background-color: var(--white);
+    margin: -73px 16px 0 16px;
+    border-radius: 10px;
+    padding: 32px 24px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .buttons-container {
+    background-color: var(--white);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .plan-options {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .plan-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .plan-card img {
+    margin-bottom: 0;
+  }
+}
