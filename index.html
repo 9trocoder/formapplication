@@ -117,30 +117,52 @@
           </p>
 
           <div class="plan-options">
-            <div class="plan-card selected" data-plan="arcade" data-price="9">
+            <label for="plan-arcade" class="plan-card" data-plan="arcade">
+              <input
+                class="visually-hidden"
+                type="radio"
+                name="plan"
+                id="plan-arcade"
+                value="arcade"
+                checked
+              />
               <img src="./assets/images/icon-arcade.svg" alt="Arcade" />
               <div class="plan-info">
                 <h3>Arcade</h3>
                 <p class="plan-price">$9/mo</p>
                 <p class="plan-bonus">2 months free</p>
               </div>
-            </div>
-            <div class="plan-card" data-plan="advanced" data-price="12">
+            </label>
+            <label for="plan-advanced" class="plan-card" data-plan="advanced">
+              <input
+                class="visually-hidden"
+                type="radio"
+                name="plan"
+                id="plan-advanced"
+                value="advanced"
+              />
               <img src="./assets/images/icon-advanced.svg" alt="Advanced" />
               <div class="plan-info">
                 <h3>Advanced</h3>
                 <p class="plan-price">$12/mo</p>
                 <p class="plan-bonus">2 months free</p>
               </div>
-            </div>
-            <div class="plan-card" data-plan="pro" data-price="15">
+            </label>
+            <label for="plan-pro" class="plan-card" data-plan="pro">
+              <input
+                class="visually-hidden"
+                type="radio"
+                name="plan"
+                id="plan-pro"
+                value="pro"
+              />
               <img src="./assets/images/icon-pro.svg" alt="Pro" />
               <div class="plan-info">
                 <h3>Pro</h3>
                 <p class="plan-price">$15/mo</p>
                 <p class="plan-bonus">2 months free</p>
               </div>
-            </div>
+            </label>
           </div>
 
           <div class="billing-toggle">
@@ -205,7 +227,9 @@
             <div class="summary-header">
               <div class="summary-plan-name">
                 <h3 id="summary-plan">Arcade (Monthly)</h3>
-                <a href="#" id="change-plan">Change</a>
+                <a href="#" id="change-plan" aria-label="Change plan selection"
+                  >Change</a
+                >
               </div>
               <span class="summary-plan-price" id="summary-price">$9/mo</span>
             </div>

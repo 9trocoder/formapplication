@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Step 2 Elements
   const planCards = document.querySelectorAll(".plan-card");
+  const planRadios = document.querySelectorAll('input[name="plan"]');
   const billingSwitch = document.getElementById("billing-switch");
   const monthlyLabel = document.getElementById("monthly-label");
   const yearlyLabel = document.getElementById("yearly-label");
@@ -164,13 +165,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Step 2 Logic
-  planCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      planCards.forEach((c) => c.classList.remove("selected"));
-      card.classList.add("selected");
-      formData.plan = card.dataset.plan;
+  planRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      formData.plan = radio.value;
+      // Update UI from radio state
+      planCards.forEach((card) => {
+        card.classList.toggle("selected", card.control.checked);
+      });
     });
   });
+
+  // Set initial selected state on load
+  document
+    .querySelector('.plan-card input[type="radio"]:checked')
+    .parentElement.classList.add("selected");
 
   billingSwitch.addEventListener("change", () => {
     formData.billing = billingSwitch.checked ? "yearly" : "monthly";
